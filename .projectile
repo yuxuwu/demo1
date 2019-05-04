@@ -1,0 +1,7 @@
+-Debug/
+-build/
+-include/
+-lib/
+-vendors/
+-*.ogg
+-compile_commands.json
