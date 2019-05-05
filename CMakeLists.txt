@@ -6,8 +6,6 @@ project (3d-test)
 set (SRC_DIR "${CMAKE_CURRENT_SOURCE_DIR}/source/") # my source files
 set (SOURCES "${SRC_DIR}/main.cpp")
 set (VEN_DIR "${CMAKE_CURRENT_SOURCE_DIR}/vendors/") # submodules
-set (LIB_DIR "${CMAKE_CURRENT_SOURCE_DIR}/lib/") # precompiled binaries
-set (INC_DIR "${CMAKE_CURRENT_SOURCE_DIR}/include/") # misc. header files
 
 
 ## Executable definition
