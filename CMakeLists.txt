@@ -26,7 +26,7 @@ add_subdirectory ("${GLFW_DIR}")
 target_link_libraries (${PROJECT_NAME} "glfw")
 target_include_directories (${PROJECT_NAME} PRIVATE "${GLFW_DIR}/include/")
 # Don't use gl includes, we supply our own
-#target_compile_definitions (${PROJECT_NAME} PRIVATE "GLFW_INCLUDE_NONE")
+target_compile_definitions (${PROJECT_NAME} PRIVATE "GLFW_INCLUDE_NONE")
 
 
 ## glad
@@ -35,3 +35,8 @@ add_library("glad" "${GLAD_DIR}/src/glad.c")
 target_include_directories (${PROJECT_NAME} PRIVATE "${GLAD_DIR}/include/")
 target_include_directories ("glad" PRIVATE "${GLAD_DIR}/include/")
 target_link_libraries (${PROJECT_NAME} "glad" "${CMAKE_DL_LIBS}")
+
+
+## spdlog
+set (SPD_DIR "${VEN_DIR}/spdlog/")
+target_include_directories (${PROJECT_NAME} PRIVATE "${SPD_DIR}/include/")
