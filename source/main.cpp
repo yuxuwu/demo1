@@ -48,15 +48,15 @@ int main() {
 	 */
 	// Covers screen
 	float vertices[] = {
-						// Upper Tri
-						-1.0f, 1.0f,  0.0f, // top left corner
-						1.0f,  1.0f,  0.0f, // top right corner
-						1.0f,  -1.0f, 0.0f, // bot right corner
-						-1.0f, -1.0f, 0.0f  // bot left corner
+		// positions          // colors           // texture coords
+		0.5f,  0.5f,  0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 1.0f, // top right
+		0.5f,  -0.5f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, // bottom right
+		-0.5f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, // bottom left
+		-0.5f, 0.5f,  0.0f, 1.0f, 1.0f, 0.0f, 0.0f, 1.0f  // top left
 	};
-	unsigned int indicies[] = {0, 1, 2, 0, 2, 3};
+	unsigned int indicies[] = {0, 1, 3, 1, 2, 3};
 
-	/// Buffers
+        /// Buffers
 	// VAO: Vertex Array Object (Defines configuration states for a VBO)
 	unsigned int VAO;
 	glGenVertexArrays(1, &VAO);
@@ -68,8 +68,17 @@ int main() {
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 	// Define Vertex Attributes (How a vertex is defined in memory)
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float),
+							(void *)0);
 	glEnableVertexAttribArray(0);
+	// color attribute
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float),
+							(void *)(3 * sizeof(float)));
+	glEnableVertexAttribArray(1);
+	// texture coord attribute
+	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float),
+							(void *)(6 * sizeof(float)));
+	glEnableVertexAttribArray(2);
 
 	// EBO: Element Buffer Object (Which vertex index to draw)
 	unsigned int EBO;

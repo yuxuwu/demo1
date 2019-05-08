@@ -4,7 +4,10 @@ project (3d-test)
 
 ## Source files
 set (SRC_DIR "${CMAKE_CURRENT_SOURCE_DIR}/source/") # my source files
-set (SOURCES "${SRC_DIR}/main.cpp")
+set (SOURCES
+  "${SRC_DIR}/main.cpp"
+  "${SRC_DIR}/utils/ShaderProgram.cpp"
+  "${SRC_DIR}/utils/Texture.cpp")
 set (VEN_DIR "${CMAKE_CURRENT_SOURCE_DIR}/vendors/") # submodules
 
 
