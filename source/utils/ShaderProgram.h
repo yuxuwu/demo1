@@ -89,7 +89,25 @@ namespace Shader {
 			glDeleteShader(fragID);
 		}
 
-		void use(){ glUseProgram(m_ID); };
+		unsigned int getID() { return m_ID; }
+		void use() { glUseProgram(m_ID); }
+
+		void setBool(const std::string &name, bool value) const {
+			glUniform1i(glGetUniformLocation(m_ID, name.c_str()), (int)value);
+		}
+
+		void setInt(const std::string &name, int value) const {
+			glUniform1i(glGetUniformLocation(m_ID, name.c_str()), value);
+		}
+
+		void setFloat(const std::string &name, float value) const {
+			glUniform1f(glGetUniformLocation(m_ID, name.c_str()), value);
+		}
+
+		void setFloat(const std::string &name, float v1, float v2, float v3, float v4) {
+			glUniform4f(glGetUniformLocation(m_ID, name.c_str()), v1, v2, v3, v4);
+		}
+
 	};
 }
 

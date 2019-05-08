@@ -42,8 +42,6 @@ int main() {
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
 
-	/// Shaders
-	Shader::ShaderProgram sp("../shaders/basicVert.vert", "../shaders/basicFrag.frag");
 
 	/*
 	 * Sample scene setup
@@ -81,6 +79,9 @@ int main() {
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
 
 
+	/// Shaders
+	Shader::ShaderProgram sp("../shaders/basicVert.vert", "../shaders/basicFrag.frag");
+
 	/* LET'S  ROLLLL */
 	glClearColor(0.01f, 0.0f, 0.99f, 1.0f);
 	sp.use();
@@ -89,6 +90,10 @@ int main() {
 
 		glClear(GL_COLOR_BUFFER_BIT);
 
+		float timeValue = glfwGetTime();
+		float greenValue = (sin(timeValue) / 2.0f) + 0.5f;
+
+		sp.setFloat("vertexColor", 0.0f, greenValue, 0.0f, 1.0f);
 		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
 		glfwSwapBuffers(window);
