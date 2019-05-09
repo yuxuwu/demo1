@@ -4,6 +4,8 @@
 #include <spdlog/spdlog.h>
 
 #include <glad/glad.h>
+#include <glm.hpp>
+#include <gtc/type_ptr.hpp>
 
 #include <string>
 #include <sstream>
@@ -23,11 +25,11 @@ namespace Shader {
 		unsigned int getID();
 		void use();
 
-		void setBool(const std::string &name, bool value) const;
-		void setInt(const std::string &name, int value) const;
-		void setFloat(const std::string &name, float value) const;
-		void setFloat(const std::string &name, float v1, float v2, float v3, float v4) const;
-
+		void setBool(const std::string &, bool) const;
+		void setInt(const std::string &, int) const;
+		void setFloat(const std::string &, float) const;
+		void setFloat4(const std::string &, float, float, float, float) const;
+		void setMat4(const std::string &, glm::mat4) const;
 	};
 }
 

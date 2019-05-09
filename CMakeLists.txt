@@ -43,3 +43,8 @@ target_link_libraries (${PROJECT_NAME} "glad" "${CMAKE_DL_LIBS}")
 ## spdlog
 set (SPD_DIR "${VEN_DIR}/spdlog/")
 target_include_directories (${PROJECT_NAME} PRIVATE "${SPD_DIR}/include/")
+
+
+## glm
+set (GLM_DIR "${VEN_DIR}/glm")
+target_include_directories (${PROJECT_NAME} PRIVATE "${GLM_DIR}")
